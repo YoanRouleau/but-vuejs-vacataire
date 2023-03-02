@@ -24,9 +24,9 @@ createApp({
             .then(data => {
                 this.memes = data.data.memes
                 setTimeout(function(){
-                    this.fetchStatus = true
                     console.log(this.fetchStatus)
-                }, 1000)
+                    this.fetchStatus = true
+                }.bind(this), 1000)    
             })
             .catch(error => {
                 console.log(error);

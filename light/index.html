@@ -9,7 +9,7 @@
 </head>
 <body>
     <main id="app">
-        <div id="loader" :class="{ 'success': fetchStatus == true }">
+        <div id="loader" :class="{ success: fetchStatus }">
             <p class="loader-message">{{ fetchMessage }}</p>
             <img :src="loaderIcon" alt="loader" id="loader-icon">
         </div>
