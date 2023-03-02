@@ -13,13 +13,16 @@
             <p class="loader-message">{{ fetchMessage }}</p>
             <img :src="loaderIcon" alt="loader" id="loader-icon">
         </div>
+        <section class="meme-search">
+            <input type="text" name="search" id="search" v-model="search">
+        </section>
         <section class="meme-container">
-            <div v-for="meme in memes" class="meme-item">
+            <div v-for="meme in filteredMemes" class="meme-item">
                 <p>{{meme.name}}</p>
                 <img :src="meme.url" class="meme-image" :height="meme.height" :width="meme.width" />
             </div>
         </section>
-        {{ memes }}
+        <!-- {{ memes }} -->
     </main>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

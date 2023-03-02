@@ -9,13 +9,22 @@ createApp({
             fetchStatus: false,
             loaderIcon: 'https://cdn.dribbble.com/users/1787505/screenshots/7300251/shot.gif',
             memes: [],
+            search: "",
         }
     },
     computed: {
-
+        filteredMemes: function(){
+            if(!this.memes.length) return "Waiting for memes"
+            
+            return this.memes.filter( meme => {
+                return this.formattedName( meme.name ).indexOf( this.formattedName(this.search) ) > -1
+            })
+        }
     },
     methods: {
-
+        formattedName: function(string){
+            return string.toLowerCase()
+        }
     },
     mounted() {
         console.log("ready")
@@ -24,12 +33,11 @@ createApp({
             .then(data => {
                 this.memes = data.data.memes
                 setTimeout(function(){
-                    console.log(this.fetchStatus)
                     this.fetchStatus = true
                 }.bind(this), 1000)    
             })
             .catch(error => {
-                console.log(error);
+                console.log(error)
                 this.fetchStatus = "Something went wrong 👀"
                 document.querySelector('#loader-icon').style.display = 'none'
             })
