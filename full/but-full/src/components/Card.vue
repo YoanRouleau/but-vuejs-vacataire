@@ -49,7 +49,7 @@ import { data } from '../store';
         font-size: 1.5em;
     }
     .meme-image{
-        max-width: 150px;
+        max-width: 200px;
         height: auto;
         padding: 30px;
     }

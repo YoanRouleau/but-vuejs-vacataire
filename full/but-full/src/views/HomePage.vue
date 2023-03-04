@@ -4,7 +4,7 @@ import { data } from '../store.js'
 </script>
 
 <template>
-  <h1>Check our latest memes:</h1>
+  <h1>Your Meme collection:</h1>
   <main>
     <div class="cards-container">
       <Card v-for="obj in data.memes" :data="obj"/>

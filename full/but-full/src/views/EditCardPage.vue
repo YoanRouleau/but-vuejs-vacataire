@@ -42,7 +42,9 @@
 
 <template>
   <main>
-    <p>New meme name: <input type="text" v-model="newName"></p>
+    <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
+    <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
+    <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
     <div class="meme-item">
       <p>{{ memeToEdit.name }}</p>
       <img :src="memeToEdit.imgSrc" class="meme-image"/>
