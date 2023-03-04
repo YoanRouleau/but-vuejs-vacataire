@@ -10,5 +10,5 @@ Répo contenant du contenu de TD préparé pour des sessions de 4h. Contenu à d
 
 * Partir d'une base vue@latest afin de construire une nouvelle application
 * Création de vues, de components, et intégration de routes
-* Jouer avec des données (JSON transmis au début du TP) et comprendre comment celles-ci peuvent être syncronisées et utilisées dans plusieurs components en même temps
+* Jouer avec des données (JSON transmis au début du TP) et comprendre comment celles-ci peuvent être synchronisées et utilisées dans plusieurs components en même temps
 
