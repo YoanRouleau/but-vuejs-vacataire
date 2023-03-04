@@ -1,0 +1,16 @@
+
+{
+    "memes": [
+        {
+            "id": 0,
+            "name": "Mike Sully face",
+            "imgSrc": "https://i.imgflip.com/7csz8k.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Monopoly No",
+            "imgSrc": "https://i.imgflip.com/7bb0rx.jpg"
+        }
+    ]
+}
+    
