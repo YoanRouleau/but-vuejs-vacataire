@@ -4,8 +4,8 @@ import { data } from '../store.js'
 </script>
 
 <template>
-  <h1>Your Meme collection:</h1>
   <main>
+    <h1>Your Meme collection:</h1>
     <div class="cards-container">
       <Card v-for="obj in data.memes" :data="obj"/>
     </div>
@@ -17,6 +17,6 @@ import { data } from '../store.js'
     display: flex;
     flex-wrap: wrap;
     gap: 35px;
-    padding: 40px;
+    padding: 40px 0;
   }
 </style>

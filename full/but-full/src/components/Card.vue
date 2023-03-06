@@ -22,7 +22,7 @@ import { data } from '../store';
         <img :src="data.imgSrc" class="meme-image"/>
         <div class="meme-actions">
             <button 
-                class="meme-edit" 
+                class="meme-button" 
                 @click="editCard">
                 Edit
             </button>
@@ -32,7 +32,7 @@ import { data } from '../store';
 
 <style>
     .meme-item{
-        padding: 20px;
+        padding: 30px;
         background-color: #F8F8F8;
         height: max-content;
         width: max-content;
@@ -41,7 +41,7 @@ import { data } from '../store';
     }
     .meme-actions{
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
     }

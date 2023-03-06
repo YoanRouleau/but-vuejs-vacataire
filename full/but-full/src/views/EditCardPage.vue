@@ -22,40 +22,56 @@
           body: new URLSearchParams({
             username: this.apiUsername,
             password: this.apiPassword,
-            text0: this.newTextBox0,
-            text1: this.newTextBox1,
+            text0: this.newTextBox0 || ' ',
+            text1: this.newTextBox1 || ' ',
             template_id: this.memeToEdit.id
           })
         }
+        console.log(options.body.values())
 
         const res = await fetch('https://api.imgflip.com/caption_image', options);
+        console.log(res);
         const data = await res.json()
+        console.log(data)
         this.memeToEdit.imgSrc = data.data.url
         if( this.newName.length ) this.memeToEdit.name = this.newName
       }
     },
     mounted(){
-      // console.log(import.meta.env)
+      console.log(import.meta.env)
     }
   } 
 </script>
 
 <template>
   <main>
-    <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
-    <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
-    <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
-    <div class="meme-item">
-      <p>{{ memeToEdit.name }}</p>
-      <img :src="memeToEdit.imgSrc" class="meme-image"/>
-    </div>
-    <pre>
-      {{ memeToEdit }}
-    </pre>
-    <button @click="editMeme">save</button>
+    <section class="meme-editor">
+      <RouterLink to="/" class="meme-goback">⬅️ GO Back</RouterLink>
+      <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
+      <br>
+      <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
+      <br>
+      <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
+      <br>
+      <div class="meme-item">
+        <p>{{ memeToEdit.name }}</p>
+        <img :src="memeToEdit.imgSrc" class="meme-image"/>
+      </div>
+      <br>
+      <pre>
+        {{ memeToEdit }}
+      </pre>
+      <button @click="editMeme" class="meme-button" :disabled="newTextBox0.length == 0 && newTextBox1.length == 0">Edit my Meme</button>
+    </section>
   </main>
 </template>
 
 <style>
-
+  .meme-editor{
+    padding: 40px;
+  }
+  .meme-goback {
+    display: block;
+    margin-bottom: 20px;
+  }
 </style>
