@@ -15,8 +15,9 @@ createApp({
     computed: {
         filteredMemes: function(){
             if(!this.memes.length) return "Waiting for memes"
-            
+
             return this.memes.filter( meme => {
+                console.log(this.search)
                 return this.formattedName( meme.name ).indexOf( this.formattedName(this.search) ) > -1
             })
         }

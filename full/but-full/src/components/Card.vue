@@ -1,19 +1,22 @@
 <script>
 import { data } from '../store';
 
-    export default{
-        props: [
-            'data'
-        ],
-        methods: {
-            editCard(){
-                this.$router.push(`/editCard/${this.data.id}`)
-            }
+export default {
+    props: [
+        'data'
+    ],
+    methods: {
+        editCard(){
+            this.$router.push(`/editCard/${this.data.id}`)
         },
-        mounted(){
-            console.log(this.data)
+        editCardNew(){
+            this.$emit('editMeme', data.id);
         }
+    },
+    mounted(){
+        console.log(this.data)
     }
+}
 </script>
 
 <template>
@@ -26,8 +29,14 @@ import { data } from '../store';
                 @click="editCard">
                 Edit
             </button>
+            <button 
+                class="meme-button" 
+                @click="editCardNew">
+                Edit (new)
+            </button>
         </div>
     </div>
+    <EditModal />
 </template>
 
 <style>

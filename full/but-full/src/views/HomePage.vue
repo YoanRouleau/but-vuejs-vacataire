@@ -1,14 +1,32 @@
-<script setup>
+<script>
 import Card from '../components/Card.vue'
+import EditModal from '../components/EditModal.vue'
 import { data } from '../store.js'
+
+export default {
+  data() {
+    return {
+      meme: null,
+      data
+    }
+  },
+  methods: {
+    callback(memeId) {
+      meme = memeId;
+      console.log(meme)
+    }
+  },
+}
+
 </script>
 
 <template>
   <main>
     <h1>Your Meme collection:</h1>
     <div class="cards-container">
-      <Card v-for="obj in data.memes" :data="obj"/>
+      <Card v-for="obj in data.memes" :data="obj" @edit-meme="callback"/>
     </div>
+    <EditModal v-if="meme" />
   </main>
 </template>
 
