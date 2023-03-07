@@ -4,6 +4,7 @@ import EditModal from '../components/EditModal.vue'
 import { data } from '../store.js'
 
 export default {
+  components: {EditModal, Card},
   data() {
     return {
       meme: null,
@@ -12,7 +13,7 @@ export default {
   },
   methods: {
     callback(memeId) {
-      meme = memeId;
+      this.meme = memeId;
       console.log(meme)
     }
   },

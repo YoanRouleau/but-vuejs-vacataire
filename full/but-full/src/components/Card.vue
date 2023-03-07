@@ -1,10 +1,13 @@
 <script>
 import { data } from '../store';
+import EditModal from "./EditModal.vue";
 
 export default {
+  components: {EditModal},
     props: [
         'data'
     ],
+    emits: ['editMeme'],
     methods: {
         editCard(){
             this.$router.push(`/editCard/${this.data.id}`)
@@ -24,13 +27,13 @@ export default {
         <p>{{ data.name }}</p>
         <img :src="data.imgSrc" class="meme-image"/>
         <div class="meme-actions">
-            <button 
-                class="meme-button" 
+            <button
+                class="meme-button"
                 @click="editCard">
                 Edit
             </button>
-            <button 
-                class="meme-button" 
+            <button
+                class="meme-button"
                 @click="editCardNew">
                 Edit (new)
             </button>
