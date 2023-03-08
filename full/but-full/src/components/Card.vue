@@ -1,9 +1,11 @@
 <script>
-import { data } from '../store';
 import EditModal from "./EditModal.vue";
+import { data } from '../store';
 
 export default {
-  components: {EditModal},
+    components: {
+        EditModal
+    },
     props: [
         'data'
     ],
@@ -17,7 +19,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.data)
     }
 }
 </script>
@@ -39,7 +40,6 @@ export default {
             </button>
         </div>
     </div>
-    <EditModal />
 </template>
 
 <style>
