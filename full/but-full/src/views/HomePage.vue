@@ -15,9 +15,12 @@ export default {
     }
   },
   methods: {
-    editMeme(memeId) {
+    editMemeCallback(memeId) {
       console.log('test')
       this.passedMemeId = memeId
+    },
+    closeMemeCallback() {
+      this.passedMemeId = null
     }
   },
 }
@@ -28,9 +31,14 @@ export default {
   <main>
     <h1>Your Meme collection:</h1>
     <div class="cards-container">
-      <Card v-for="obj in data.memes" :data="obj" @edit-meme="editMeme(obj.id)"/>
+      <Card 
+        v-for="obj in data.memes" 
+        :data="obj" 
+        @edit-meme="editMemeCallback(obj.id)"/>
     </div>
-    <EditModal :passedMemeId="passedMemeId"/>
+    <EditModal 
+    :passedMemeId="passedMemeId"
+    @close-meme="closeMemeCallback"/>
   </main>
 </template>
 

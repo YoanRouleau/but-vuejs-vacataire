@@ -15,7 +15,7 @@ export default {
             this.$router.push(`/editCard/${this.data.id}`)
         },
         editCardNew(){
-            this.$emit('editMeme', data.id);
+            this.$emit('editMeme', this.data.id);
         }
     },
     mounted(){
