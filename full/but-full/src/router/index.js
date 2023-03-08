@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
-import EditCardPage from '../views/EditCardPage.vue'
+import AddCardPage from '../views/AddCardPage.vue'
 import AboutPage from '../views/AboutPage.vue'
 
 const router = createRouter({
@@ -12,9 +12,9 @@ const router = createRouter({
       component: HomePage
     },
     {
-      path: '/editCard/:id',
-      name: 'editCard',
-      component: EditCardPage
+      path: '/addCard',
+      name: 'addCard',
+      component: AddCardPage
     },
     {
       path: '/about',

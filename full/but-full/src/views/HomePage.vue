@@ -30,6 +30,7 @@ export default {
 <template>
   <main>
     <h1>Your Meme collection:</h1>
+    <RouterLink to="/addCard" class="meme-goback">🆕 New Meme</RouterLink>
     <div class="cards-container">
       <Card 
         v-for="obj in data.memes" 

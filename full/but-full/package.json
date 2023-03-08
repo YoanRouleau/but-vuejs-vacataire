@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "v-select-image": "^0.1.5",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

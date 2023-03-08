@@ -54,28 +54,30 @@ export default{
 
 <template>
     <div v-if="this.passedMemeId !== null" class="modal">
-        <p>Hello from the modal!</p>
-        <button @click="this.$emit('closeMeme');">Close</button>
-        <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
-        <br>
-        <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
-        <br>
-        <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
-        <br>
-        <div class="meme-item">
-            <p>{{ memeToEdit.name }}</p>
-            <img :src="memeToEdit.imgSrc" class="meme-image" :alt="memeToEdit.name"/>
+        <div class="modal-container">
+            <p>Hello from the modal!</p>
+            <button @click="this.$emit('closeMeme');">Close</button>
+            <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
+            <br>
+            <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
+            <br>
+            <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
+            <br>
+            <div class="meme-item">
+                <p>{{ memeToEdit.name }}</p>
+                <img :src="memeToEdit.imgSrc" class="meme-image" :alt="memeToEdit.name"/>
+            </div>
+            <br>
+            <pre>
+                {{ memeToEdit }}
+            </pre>
+            <button
+                @click="editMeme"
+                class="meme-button"
+                :disabled="newTextBox0.length === 0 && newTextBox1.length === 0">
+              Generate new Meme
+            </button>
         </div>
-        <br>
-        <pre>
-            {{ memeToEdit }}
-        </pre>
-        <button
-            @click="editMeme"
-            class="meme-button"
-            :disabled="newTextBox0.length === 0 && newTextBox1.length === 0">
-          Edit my Meme
-        </button>
     </div>
 </template>
 
@@ -83,9 +85,18 @@ export default{
     .modal {
         position: fixed;
         z-index: 999;
-        top: 20%;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 100vh;
+    }
+    .modal-container {
+        position: absolute;
+        top: 50%;
         left: 50%;
-        width: 300px;
-        margin-left: -150px;
+        transform: translate(-50%,-50%);
+        background: white;
+        padding: 50px;
     }
 </style>
