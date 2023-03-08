@@ -15,7 +15,7 @@
       }
     },
     methods: {
-      searchMeme: async function(){
+      searchMeme: async function(e){
         return fetch( "https://api.imgflip.com/get_memes" )
             .then(response => response.json())
             .then( ({data}) => {
@@ -60,7 +60,20 @@
       }
     },
     mounted(){
-      console.log(import.meta.env)
+        console.log(import.meta.env)
+        const opts = document.getElementById('selected-meme').childNodes;
+        const dinput = document.getElementById('search');
+        let eventSource = null;
+        let value = '';
+        dinput.addEventListener('keydown', (e) => {
+            eventSource = e.key ? 'input' : 'list';
+        });
+        dinput.addEventListener('input', (e) => {
+            value = e.target.value;
+            if (eventSource === 'list') {
+                console.log(value)
+            }
+        });
     }
   } 
 </script>
@@ -79,6 +92,7 @@
         <br>
         <p>New <strong>bottom</strong> text: <input type="text" v-model="textBox1"></p>
         <button @click="addMeme" class="meme-button" :disabled="textBox0.length == 0 && textBox1.length == 0">Create Meme</button>
+        <img id="output" src="">
     </section>
   </main>
 </template>
