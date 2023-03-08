@@ -1,7 +1,7 @@
 <script>
   import { data } from '../store.js'
-  import vSelectImage from 'v-select-image'
-  
+  import Multiselect from 'vue-multiselect'
+
   export default{
     data(){
       return {
@@ -12,18 +12,18 @@
         name: '',
         textBox0: '',
         textBox1: '',
+        newMeme: '',
         matchingMemes: []
       }
     },
     components: {
-        vSelectImage
+        Multiselect
     },
     methods: {
       searchMeme: async function(){
         return fetch( "https://api.imgflip.com/get_memes" )
             .then(response => response.json())
             .then( ({data}) => {
-                console.log(data)
                 this.matchingMemes = data.memes.filter( meme => {
                     return this.formattedName( meme.name ).indexOf( this.formattedName(this.search) ) > -1
                 })    
@@ -33,6 +33,8 @@
             })
       },
       addMeme: async function(){
+        var selectedId = document.querySelector('input').getAttribute('data-id')
+
         const options = {
           method: 'POST',
           headers: {
@@ -42,12 +44,13 @@
           body: new URLSearchParams({
             username: this.apiUsername,
             password: this.apiPassword,
-            text0: this.newTextBox0 || ' ',
-            text1: this.newTextBox1 || ' ',
-            template_id: this.memeToEdit.id
+            text0: this.textBox0 || ' ',
+            text1: this.textBox1 || ' ',
+            template_id: ''
           })
         }
-        console.log(options.body.values())
+
+
 
         const res = await fetch('https://api.imgflip.com/caption_image', options);
         console.log(res);
@@ -70,31 +73,26 @@
   <main>
     <section class="meme-editor">
         <RouterLink to="/" class="meme-goback">⬅️ GO Back</RouterLink>
-        <p>Search for a meme first: <input type="text" name="search" id="search" v-model="search" @keyup="searchMeme"></p>
-        <v-select-image
-            class="w-650"
-            v-model="matchingMemes"
-            :items="matchingMemes"
-            colorSchema="#8B8B8B"
-        />
-        <pre v-for="meme in matchingMemes">
-            {{ meme }}
+        <div>
+            Search for a meme first: <input type="text" name="search" id="search" v-model="search" list="selected-meme" @keyup="searchMeme">
+            <datalist id="selected-meme">
+                <option v-for="meme in matchingMemes" :value="meme.name">{{ meme.id }}</option>
+            </datalist>
+        </div>
+        <multiselect v-model="newMeme" placeholder="Fav No Man’s Sky path" label="title" track-by="title" :options="matchingMemes" :option-height="104" :show-labels="false">
+            <template slot="singleLabel" slot-scope="props"><img class="option__image" :src="props.option.url" alt="No Man’s Sky"><span class="option__desc"><span class="option__title">{{ props.option.name }}</span></span></template>
+            <template slot="option" slot-scope="props"><img class="option__image" :src="props.option.url" alt="No Man’s Sky">
+            <div class="option__desc"><span class="option__title">{{ props.option.name }}</span><span class="option__small">{{ props.option.desc }}</span></div>
+            </template>
+        </multiselect>
+        <p>New <strong>top</strong> text: <input type="text" v-model="textBox0"></p>
+        <br>
+        <p>New <strong>bottom</strong> text: <input type="text" v-model="textBox1"></p>
+        <br>
+        <pre>
+            {{ memeToEdit }}
         </pre>
-      <!-- <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
-      <br>
-      <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
-      <br>
-      <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
-      <br>
-      <div class="meme-item">
-        <p>{{ memeToEdit.name }}</p>
-        <img :src="memeToEdit.imgSrc" class="meme-image"/>
-      </div>
-      <br>
-      <pre>
-        {{ memeToEdit }}
-      </pre>
-      <button @click="editMeme" class="meme-button" :disabled="newTextBox0.length == 0 && newTextBox1.length == 0">Edit my Meme</button> -->
+        <button @click="editMeme" class="meme-button" :disabled="textBox0.length == 0 && textBox1.length == 0">Create Meme</button>
     </section>
   </main>
 </template>

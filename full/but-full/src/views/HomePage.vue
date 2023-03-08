@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     editMemeCallback(memeId) {
-      console.log('test')
       this.passedMemeId = memeId
     },
     closeMemeCallback() {
