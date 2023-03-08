@@ -2,7 +2,7 @@
 import { data } from '../store';
 
 export default{
-    props: [ 
+    props: [
         'passedMemeId'
     ],
     data(){
@@ -11,14 +11,13 @@ export default{
             apiPassword: import.meta.env.VITE_IMGFLIP_PASSWORD,
             newName: '',
             newTextBox0: '',
-            newTextBox1: ''
+            newTextBox1: '',
+            data
         }
     },
     computed: {
         memeToEdit: function(){
-            return data.memes.filter(meme => {
-                return meme.id == this.passedMemeId
-            })
+          return this.data.memes.find(meme => meme.id === this.passedMemeId)
         }
     },
     methods: {
@@ -59,19 +58,24 @@ export default{
         <button @click="this.$emit('closeMeme');">Close</button>
         <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
         <br>
-        <p>New <strong>top</strong> text: <input type="text" v-model="this.newTextBox0"></p>
+        <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
         <br>
         <p>New <strong>bottom</strong> text: <input type="text" v-model="newTextBox1"></p>
         <br>
         <div class="meme-item">
             <p>{{ memeToEdit.name }}</p>
-            <img :src="memeToEdit.imgSrc" class="meme-image"/>
+            <img :src="memeToEdit.imgSrc" class="meme-image" :alt="memeToEdit.name"/>
         </div>
         <br>
         <pre>
             {{ memeToEdit }}
         </pre>
-        <button @click="editMeme" class="meme-button" :disabled="newTextBox0.length == 0 && newTextBox1.length == 0">Edit my Meme</button>
+        <button
+            @click="editMeme"
+            class="meme-button"
+            :disabled="newTextBox0.length === 0 && newTextBox1.length === 0">
+          Edit my Meme
+        </button>
     </div>
 </template>
 
