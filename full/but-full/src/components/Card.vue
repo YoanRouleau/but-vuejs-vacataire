@@ -1,6 +1,6 @@
 <script>
 import EditModal from "./EditModal.vue";
-import { data } from '../store';
+// import { data } from '../store';
 
 export default {
     components: {
@@ -12,9 +12,6 @@ export default {
     emits: ['editMeme'],
     methods: {
         editCard(){
-            this.$router.push(`/editCard/${this.data.id}`)
-        },
-        editCardNew(){
             this.$emit('editMeme', this.data.id);
         }
     },
@@ -32,11 +29,6 @@ export default {
                 class="meme-button"
                 @click="editCard">
                 Edit
-            </button>
-            <button
-                class="meme-button"
-                @click="editCardNew">
-                Edit (new)
             </button>
         </div>
     </div>

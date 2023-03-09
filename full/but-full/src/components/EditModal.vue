@@ -55,8 +55,9 @@ export default{
 <template>
     <div v-if="this.passedMemeId !== null" class="modal">
         <div class="modal-container">
-            <p>Hello from the modal!</p>
             <button @click="this.$emit('closeMeme');">Close</button>
+            <br>
+            <br>
             <p>Meme name: <input type="text" v-model="memeToEdit.name"></p>
             <br>
             <p>New <strong>top</strong> text: <input type="text" v-model="newTextBox0"></p>
