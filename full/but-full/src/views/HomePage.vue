@@ -20,6 +20,9 @@ export default {
     },
     closeMemeCallback() {
       this.passedMemeId = null
+    },
+    testDraggable() {
+      console.log("Test")
     }
   },
 }
