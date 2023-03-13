@@ -42,6 +42,7 @@ export default {
         <draggable
           class="list-group"
           :list="data1"
+          group="memes"
           itemKey="name">
           <template #item="{ element }">
             <Card 
@@ -55,6 +56,7 @@ export default {
         <draggable
           class="list-group"
           :list="data2"
+          group="memes"
           itemKey="name">
           <template #item="{ element }">
             <Card 
