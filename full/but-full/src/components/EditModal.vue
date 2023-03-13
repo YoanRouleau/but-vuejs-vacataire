@@ -23,18 +23,18 @@ export default{
     methods: {
         editMeme: async function(){
             const options = {
-            method: 'POST',
-            headers: {
-                cookie: 'claim_key=M09Hir332NYnO9N0RfJLn09eIhB6bhgl',
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: new URLSearchParams({
-                username: this.apiUsername,
-                password: this.apiPassword,
-                text0: this.newTextBox0 || ' ',
-                text1: this.newTextBox1 || ' ',
-                template_id: this.memeToEdit.id
-            })
+                method: 'POST',
+                headers: {
+                    cookie: 'claim_key=M09Hir332NYnO9N0RfJLn09eIhB6bhgl',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    username: this.apiUsername,
+                    password: this.apiPassword,
+                    text0: this.newTextBox0 || ' ',
+                    text1: this.newTextBox1 || ' ',
+                    template_id: this.memeToEdit.id
+                })
             }
             console.log(options.body.values())
 

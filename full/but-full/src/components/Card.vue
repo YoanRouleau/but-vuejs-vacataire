@@ -12,6 +12,7 @@ export default {
     emits: ['editMeme'],
     methods: {
         editCard(){
+            console.log(this.data.id)
             this.$emit('editMeme', this.data.id);
         }
     },

@@ -91,9 +91,13 @@ export default{
             </datalist>
         </div>
         <br>
-        <p>New <strong>top</strong> text: <input type="text" v-model="textBox0"></p>
+        <p>New <strong>top</strong> text: 
+            <input type="text" v-model="textBox0">
+        </p>
         <br>
-        <p>New <strong>bottom</strong> text: <input type="text" v-model="textBox1"></p>
+        <p>New <strong>bottom</strong> text: 
+            <input type="text" v-model="textBox1">
+        </p>
         <br>
         <button @click="addMeme" class="meme-button" :disabled="textBox0.length == 0 && textBox1.length == 0">Create Meme</button>
     </section>
