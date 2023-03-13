@@ -1,6 +1,5 @@
-
 {
-    "memes": [
+    "memes1": [
         {
             "id": 198834788,
             "name": "Mike Sully face",
@@ -15,6 +14,23 @@
             "id": 174489685,
             "name": "They are the same picture",
             "imgSrc": "https://i.imgflip.com/7atdhn.jpg"
+        }
+    ],
+    "memes2": [
+        {
+            "id": 174489685,
+            "name": "They are the same picture",
+            "imgSrc": "https://i.imgflip.com/7atdhn.jpg"
+        },
+        {
+            "id": 198834788,
+            "name": "Mike Sully face",
+            "imgSrc": "https://i.imgflip.com/7csz8k.jpg"
+        },
+        {
+            "id": 168740717,
+            "name": "Monopoly No",
+            "imgSrc": "https://i.imgflip.com/7bb0rx.jpg"
         }
     ]
 }

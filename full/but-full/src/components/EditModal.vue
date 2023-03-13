@@ -17,7 +17,10 @@ export default{
     },
     computed: {
         memeToEdit: function(){
-          return this.data.memes.find(meme => meme.id === this.passedMemeId)
+            if(this.data.memes1.find(meme => meme.id === this.passedMemeId))
+                return this.data.memes1.find(meme => meme.id === this.passedMemeId)
+            else
+                return this.data.memes2.find(meme => meme.id === this.passedMemeId)
         }
     },
     methods: {
