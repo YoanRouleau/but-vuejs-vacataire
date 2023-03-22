@@ -48,6 +48,8 @@ export default{
             const fetchRes = await fetch('https://api.imgflip.com/caption_image', options)
             console.log(fetchRes)
             const fetchData = await fetchRes.json()
+            
+            // Adding to the store
             data.memes.push({
                 name: selectedMeme.value,
                 id: parseInt(selectedMeme.getAttribute('data-id')),

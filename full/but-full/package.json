@@ -5,16 +5,25 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "test:unit": "vitest",
+    "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
+    "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'"
   },
   "dependencies": {
+    "@vue/test-utils": "^2.3.2",
     "v-select-image": "^0.1.5",
+    "vitest": "^0.29.7",
     "vue": "^3.2.47",
     "vue-multiselect": "^2.1.7",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vitest/coverage-c8": "^0.29.7",
+    "jsdom": "^21.1.1",
     "vite": "^4.1.4"
   }
 }

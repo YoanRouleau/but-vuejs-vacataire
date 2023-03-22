@@ -55,6 +55,7 @@ export default{
 <template>
     <div v-if="this.passedMemeId !== null" class="modal">
         <div class="modal-container">
+            <h2>Edit Meme</h2>
             <button @click="this.$emit('closeMeme');">Close</button>
             <br>
             <br>
