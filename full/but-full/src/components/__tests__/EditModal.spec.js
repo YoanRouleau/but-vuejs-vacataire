@@ -8,7 +8,7 @@ describe('OpeningEditModal', () => {
     const wrapper = mount(
       EditModal, { 
         props: { 
-          passedMemeId: 198834788 
+          passedMemeId: 198834788
         } 
       }
     )
